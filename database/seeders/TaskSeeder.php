@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TaskSeeder extends Seeder
 {
@@ -13,5 +14,11 @@ class TaskSeeder extends Seeder
     public function run(): void
     {
         //
+        DB::table('tasks')->insert([
+            'title' => 'テストタスク1',
+            'body' => 'テストタスク1の内容です。',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
     }
 }
