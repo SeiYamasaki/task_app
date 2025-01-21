@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+.text1 {
+    color: green;
+}
+
+.text2 {
+    color: red;
+}
+
+.task-item {
+    display: flex;
+    /* 横並びにする */
+    gap: 10px;
+    /* 要素間のスペース */
+}
+
+.button-group {
+    display: flex;
+    gap: 5px;
+}
+
+.button {
+    display: flex;
+    gap: 5px;
+}
+
+textarea.body {
+    width: 400px;
+    height: 100px;
+}
+
+textarea.body:hover {
+    background-color: #007BFF;
+    /* ホバー時の背景色 */
+    color: black;
+    /* ホバー時の文字色 */
+}
+
+.title {
+    width: 250px;
+    height: 25px;
+}
+
+.title:hover {
+    background-color: #007BFF;
+    /* ホバー時の背景色 */
+    color: #fff;
+    /* ホバー時の文字色 */
+}
+
+.error {
+    color: red;
+}

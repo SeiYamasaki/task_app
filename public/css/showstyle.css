@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+.text1 {
+    color: green;
+
+}
+
+.text2 {
+
+    color: blue;
+}
+
+.text3 {
+    color: red;
+}
+
+.button-group {
+    display: flex;
+    gap: 5px;
+
+}
