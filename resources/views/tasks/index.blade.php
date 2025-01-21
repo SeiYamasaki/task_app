@@ -14,29 +14,41 @@
     @foreach ($tasks as $task)
         <div class="task-item">
             {{-- $taskへのリンク --}}
-            <a href="{{ route('tasks.show', $task) }}">{{ $task->title }}</a>
+            <a href="/tasks/{{ $task->id }}">{{ $task->title }}</a>
 
             {{-- ボタン(削除) --}}
             <form action="{{ route('tasks.destroy', $task) }}" method="post">
                 @csrf
                 @method('DELETE')
-                <input type="submit" value="削除する" class="button" onclick="if(!confirm('本当に削除しますか？')){return felse};">
+                <button onclick="if(!confirm('本当に削除しますか？')){return false};">削除ボタン</button>
             </form>
         </div>
         <hr>
-        <h1 class="text1">新規タスク登録</h1>
-        <form action="{{ route('tasks.store') }}" method="post">
-            <p>
-                <label for="title">タイトル</label><br>
-                <input type="text" name="title" class="title" id="title">
-            </p>
-            <p>
-                <label for="body">本文</label><br>
-                <textarea name="body" class="body" id="body"></textarea>
-            </p>
     @endforeach
-
-    <input type="submit" value="Create Task">
+    <h1 class="text1">新規タスク登録</h1>
+    @if ($errors->any())
+        <div class="error">
+            <p>
+                <b>{{ count($errors) }}件のエラーがあります。</b>
+            </p>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <form action="{{ route('tasks.store') }}" method="post">
+        @csrf
+        <p>
+            <label for="title">タイトル</label><br>
+            <input type="text" name="title" id="title" value="{{ old('title') }}">
+        </p>
+        <p>
+            <label for="body">本文</label><br>
+            <textarea name="body" class="body" id="body">{{ old('body') }}</textarea>
+        </p>
+        <button onclick="location.href='{{ route('tasks.create') }}'">Create Task</button>
     </form>
 </body>
 
